@@ -1,12 +1,13 @@
 package com.ig.service;
 
+import com.ig.model.JmsDetails;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class JmsServiceImpl implements JmsService {
     @Override
-    public void send(MultipartFile file) {
+    public void send(MultipartFile file, JmsDetails jmsDetails) {
 
     }
 }

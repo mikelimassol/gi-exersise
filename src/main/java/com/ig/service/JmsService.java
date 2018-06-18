@@ -1,10 +1,10 @@
 package com.ig.service;
 
-import org.springframework.stereotype.Service;
+import com.ig.model.JmsDetails;
 import org.springframework.web.multipart.MultipartFile;
 
 public interface JmsService {
 
-    void send(MultipartFile file);
+    void send(MultipartFile file, JmsDetails jmsDetails);
 
 }
