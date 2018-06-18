@@ -6,13 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="gs-spring-boot" />
-        <module name="ig-exersise" />
+        <module name="exersise" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="gs-spring-boot" target="1.8" />
-      <module name="ig-exersise" target="1.8" />
+      <module name="exersise" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
