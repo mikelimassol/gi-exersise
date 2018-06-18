@@ -1,3 +1,4 @@
-com/ig/MainController.class
 com/ig/Application.class
+com/ig/JmsServiceImpl.class
+com/ig/MainController.class
 com/ig/JmsService.class
