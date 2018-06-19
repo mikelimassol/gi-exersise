@@ -8,15 +8,15 @@ public class JmsDetails {
         private String brokerUsername;
         private String brokerPassword;
         private String destination;
-        private String destinationType;
+        private Boolean isTopic;
 
 
-    public JmsDetails(String brokerConnection, String brokerUsername, String brokerPassword, String destination, String destinationType) {
+    public JmsDetails(String brokerConnection, String brokerUsername, String brokerPassword, String destination, Boolean isTopic) {
         this.brokerConnection = brokerConnection;
         this.brokerUsername = brokerUsername;
         this.brokerPassword = brokerPassword;
         this.destination = destination;
-        this.destinationType = destinationType;
+        this.isTopic = isTopic;
     }
 
     public JmsDetails() {
@@ -55,12 +55,13 @@ public class JmsDetails {
         this.destination = destination;
     }
 
-    public String getDestinationType() {
-        return destinationType;
+    public Boolean getIsTopic() {
+        return isTopic;
     }
 
-    public void setDestinationType(String destinationType) {
-        this.destinationType = destinationType;
+
+    public void setIsTopic(Boolean isTopic) {
+        this.isTopic = isTopic;
     }
 
     @Override
@@ -72,13 +73,13 @@ public class JmsDetails {
                 Objects.equals(brokerUsername, that.brokerUsername) &&
                 Objects.equals(brokerPassword, that.brokerPassword) &&
                 Objects.equals(destination, that.destination) &&
-                Objects.equals(destinationType, that.destinationType);
+                Objects.equals(isTopic, that.isTopic);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(brokerConnection, brokerUsername, brokerPassword, destination, destinationType);
+        return Objects.hash(brokerConnection, brokerUsername, brokerPassword, destination, isTopic);
     }
 
     @Override
@@ -88,7 +89,7 @@ public class JmsDetails {
                 ", brokerUsername='" + brokerUsername + '\'' +
                 ", brokerPassword='" + brokerPassword + '\'' +
                 ", destination='" + destination + '\'' +
-                ", destinationType='" + destinationType + '\'' +
+                ", isTopic='" + isTopic + '\'' +
                 '}';
     }
 }

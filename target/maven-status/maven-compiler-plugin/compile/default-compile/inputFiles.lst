@@ -1,4 +1,5 @@
+/Users/mpa67/Workspace/ig-exersise/src/main/java/com/ig/service/JmsService.java
 /Users/mpa67/Workspace/ig-exersise/src/main/java/com/ig/Application.java
-/Users/mpa67/Workspace/ig-exersise/src/main/java/com/ig/JmsService.java
-/Users/mpa67/Workspace/ig-exersise/src/main/java/com/ig/MainController.java
-/Users/mpa67/Workspace/ig-exersise/src/main/java/com/ig/JmsServiceImpl.java
+/Users/mpa67/Workspace/ig-exersise/src/main/java/com/ig/model/JmsDetails.java
+/Users/mpa67/Workspace/ig-exersise/src/main/java/com/ig/service/JmsServiceImpl.java
+/Users/mpa67/Workspace/ig-exersise/src/main/java/com/ig/web/MainController.java

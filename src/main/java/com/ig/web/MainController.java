@@ -28,6 +28,15 @@ public class MainController {
 
     @GetMapping("/")
     public String index(Model model) throws IOException {
+
+        if(!model.containsAttribute("jmsDetails")){
+
+            JmsDetails jmsDetails = new JmsDetails("tcp://localhost:61616", "admin", "admin", "nterview-1",false );
+
+            model.addAttribute("jmsDetails", jmsDetails);
+
+        }
+
         return "form";
     }
 
@@ -38,7 +47,7 @@ public class MainController {
         jmsService.send(file, jmsDetails);
 
         redirectAttributes.addFlashAttribute("message",
-                "You successfully send the content " + file.getOriginalFilename() + "!");
+                "You successfully send the content " + file.getOriginalFilename() + "!").addFlashAttribute("jmsDetails", jmsDetails);
 
         return "redirect:/";
     }

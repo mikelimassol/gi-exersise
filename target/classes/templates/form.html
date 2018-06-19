@@ -1,18 +1,43 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <body>
 
-	<div th:if="${message}">
-		<h2 th:text="${message}"/>
-	</div>
-
-	<div>
-		<form method="POST" enctype="multipart/form-data" action="/">
-			<table>
-				<tr><td>File to upload:</td><td><input type="file" name="file" /></td></tr>
-				<tr><td></td><td><input type="submit" value="Upload" /></td></tr>
-			</table>
-		</form>
-	</div>
+<div th:if="${message}">
+    <h2 th:text="${message}"/>
+</div>
+<div>
+    <form method="POST" enctype="multipart/form-data" th:object="${jmsDetails}" action="/">
+        <table>
+            <tr>
+                <td>Broker Connection:</td>
+                <td><input type="text" th:field="*{brokerConnection}" /></td>
+            </tr>
+            <tr>
+                <td>Broker Username:</td>
+                <td><input type="text" th:field="*{brokerUsername}" /></td>
+            </tr>
+            <tr>
+                <td>Broker Password:</td>
+                <td><input type="text" th:field="*{brokerPassword}" /></td>
+            </tr>
+            <tr>
+                <td>Destination:</td>
+                <td><input type="text" th:field="*{destination}" /></td>
+            </tr>
+            <tr>
+                 <td>Send to Topic:</td>
+                 <td><input type="checkbox" th:field="*{isTopic}" /></td>
+            </tr>
+            <tr>
+                <td>File to upload:</td>
+                <td><input type="file" name="file"/></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" value="Upload"/></td>
+            </tr>
+        </table>
+    </form>
+</div>
 
 </body>
 </html>
