@@ -2,18 +2,20 @@ package com.ig.service;
 
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.ig.model.Order;
+import org.springframework.stereotype.Component;
 import org.thymeleaf.util.StringUtils;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class OrderXmlDeserializerService {
 
 
     private static final String ORDER_SEPERATOR = "<Order>";
 
-    public List<Order> deserializeOrdersXml(String content) throws IOException {
+    public List<Order> deserializeXmlOrders(String content) throws IOException {
 
         if(StringUtils.isEmpty(content)){
             return new ArrayList<>();

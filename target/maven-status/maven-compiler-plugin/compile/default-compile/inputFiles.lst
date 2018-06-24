@@ -1,5 +1,8 @@
+/Users/mpa67/Workspace/ig-exersise/src/main/java/com/ig/model/JmsDetailsForm.java
 /Users/mpa67/Workspace/ig-exersise/src/main/java/com/ig/service/JmsService.java
+/Users/mpa67/Workspace/ig-exersise/src/main/java/com/ig/service/EmptyOrdersException.java
+/Users/mpa67/Workspace/ig-exersise/src/main/java/com/ig/service/OrderXmlDeserializerService.java
 /Users/mpa67/Workspace/ig-exersise/src/main/java/com/ig/Application.java
-/Users/mpa67/Workspace/ig-exersise/src/main/java/com/ig/model/JmsDetails.java
+/Users/mpa67/Workspace/ig-exersise/src/main/java/com/ig/model/Order.java
 /Users/mpa67/Workspace/ig-exersise/src/main/java/com/ig/service/JmsServiceImpl.java
 /Users/mpa67/Workspace/ig-exersise/src/main/java/com/ig/web/MainController.java

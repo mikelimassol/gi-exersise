@@ -1,11 +1,12 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <body>
+<H1>Order Form</H1>
 
 <div th:if="${message}">
     <h2 th:text="${message}"/>
 </div>
 <div>
-    <form method="POST" enctype="multipart/form-data" th:object="${jmsDetails}" action="/">
+    <form method="POST" enctype="multipart/form-data" th:object="${jmsDetailsForm}" action="/">
         <table>
             <tr>
                 <td>Broker Connection:</td>
@@ -25,15 +26,15 @@
             </tr>
             <tr>
                  <td>Send to Topic:</td>
-                 <td><input type="checkbox" th:field="*{isTopic}" /></td>
+                 <td><input type="checkbox" th:field="*{sendToTopic}" /></td>
             </tr>
             <tr>
-                <td>File to upload:</td>
+                <td>Orders File to upload:</td>
                 <td><input type="file" name="file"/></td>
             </tr>
             <tr>
                 <td></td>
-                <td><input type="submit" value="Upload"/></td>
+                <td><input type="submit" value="Send Orders"/></td>
             </tr>
         </table>
     </form>

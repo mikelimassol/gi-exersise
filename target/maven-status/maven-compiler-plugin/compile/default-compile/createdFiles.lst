@@ -1,1 +1,8 @@
+com/ig/model/JmsDetailsForm.class
+com/ig/model/Order.class
+com/ig/service/EmptyOrdersException.class
+com/ig/web/MainController.class
 com/ig/Application.class
+com/ig/service/OrderXmlDeserializerService.class
+com/ig/service/JmsServiceImpl.class
+com/ig/service/JmsService.class

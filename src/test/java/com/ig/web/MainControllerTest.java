@@ -7,7 +7,8 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.fileUpload;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-import com.ig.model.JmsDetails;
+import com.ig.model.JmsDetailsForm;
+import com.ig.service.EmptyOrdersException;
 import com.ig.service.JmsService;
 import org.junit.Before;
 import org.junit.Test;
@@ -23,7 +24,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@AutoConfigureMockMvc
+    @AutoConfigureMockMvc
 public class MainControllerTest {
 
     @Autowired
@@ -32,42 +33,14 @@ public class MainControllerTest {
     @MockBean
     private JmsService jmsService;
 
-    private JmsDetails defaultJmsDetails;
-    private JmsDetails editedJmsDetails;
+    private JmsDetailsForm defaultJmsDetails;
+    private JmsDetailsForm editedJmsDetails;
 
     @Before
     public void init(){
-        defaultJmsDetails = new JmsDetails("tcp://localhost:61616", "admin", "admin", "nterview-1",false );
-        editedJmsDetails = new JmsDetails("tcp://127.0.0:61616", "test", "test", "nterview-2",true );
-
+        defaultJmsDetails = new JmsDetailsForm("tcp://localhost:61616", "admin", "admin", "nterview-1",false );
+        editedJmsDetails = new JmsDetailsForm("tcp://127.0.0:61616", "test", "test", "nterview-2",true );
     }
-
-    @Test
-    public void shouldUploadAndSendFile() throws Exception {
-
-        ClassPathResource resource = new ClassPathResource("interview-test-orders-1.xml");
-
-        MockMultipartFile multipartFile = new MockMultipartFile("file", "interview-test-orders-1.xml",
-                "text/xml", resource.getInputStream());
-
-        this.mvc.perform(fileUpload("/")
-                .file(multipartFile)
-                .param("brokerConnection", editedJmsDetails.getBrokerConnection())
-                .param("brokerUsername", editedJmsDetails.getBrokerUsername())
-                .param("brokerPassword", editedJmsDetails.getBrokerPassword())
-                .param("destination", editedJmsDetails.getDestination())
-                .param("isTopic", editedJmsDetails.getIsTopic().toString())
-        )
-                .andExpect(status().isFound())
-                .andExpect(header().string("Location", "/"))
-                .andExpect(redirectedUrl("/"))
-                .andExpect(flash().attribute("jmsDetails", editedJmsDetails))
-                .andExpect(flash().attribute("message", "You successfully send the content interview-test-orders-1.xml!"));
-
-        then(this.jmsService).should().send(multipartFile, editedJmsDetails);
-
-    }
-
 
     @Test
     public void shouldLoadDefaultJmsDetails() throws Exception {
@@ -80,6 +53,38 @@ public class MainControllerTest {
                 .andExpect(content().string(containsString(defaultJmsDetails.getDestination())));
 
     }
+
+    @Test
+    public void shouldUploadAndSendFile() throws Exception, EmptyOrdersException {
+
+        //given
+        ClassPathResource resource = new ClassPathResource("interview-test-orders-1.xml");
+
+        MockMultipartFile multipartFile = new MockMultipartFile("file", "interview-test-orders-1.xml",
+                "text/xml", resource.getInputStream());
+
+        //when
+        this.mvc.perform(fileUpload("/")
+                .file(multipartFile)
+                .param("brokerConnection", editedJmsDetails.getBrokerConnection())
+                .param("brokerUsername", editedJmsDetails.getBrokerUsername())
+                .param("brokerPassword", editedJmsDetails.getBrokerPassword())
+                .param("destination", editedJmsDetails.getDestination())
+                .param("sendToTopic", editedJmsDetails.getSendToTopic().toString())
+        )
+                .andExpect(status().isFound())
+                .andExpect(header().string("Location", "/"))
+                .andExpect(redirectedUrl("/"))
+                .andExpect(flash().attribute("jmsDetailsForm", editedJmsDetails))
+                .andExpect(flash().attribute("message", "You successfully send the content interview-test-orders-1.xml!"));
+
+        //then
+        then(this.jmsService).should().send(multipartFile, editedJmsDetails);
+
+    }
+
+
+
 
 
 
